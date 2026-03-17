@@ -1,7 +1,9 @@
+import AsideNews from "../components/AsideNews"
+
 function AdminProfile() {
     return(
         <>
-        <h2>hola</h2>
+        <AsideNews />
         </>
     )
 }
