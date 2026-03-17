@@ -1,8 +1,11 @@
+import RegistroUser from "../components/RegistroUser";
+
+
 function Register() {
-    return(
-        <>
-        <h2>hola</h2>
-        </>
-    )
+  return (
+    <>
+      <RegistroUser />
+    </>
+  );
 }
-export default Register
+export default Register;

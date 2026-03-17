@@ -48,4 +48,4 @@ async function deleteData(id) {
   return datos;
 }
 
-export { getDatos, postDatos, patchData, deleteData }
+export default { getDatos, postDatos, patchData, deleteData }

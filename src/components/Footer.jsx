@@ -1,4 +1,4 @@
-function NavInicio() {
+function Footer() {
   
   return (
     <div>
@@ -7,4 +7,4 @@ function NavInicio() {
   )
 }
 
-export default NavInicio
+export default Footer
