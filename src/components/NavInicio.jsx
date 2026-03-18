@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Sun, Moon, Palette, Menu } from 'lucide-react';
+import { Search, Sun, Moon, Palette } from 'lucide-react';
 
 function NavInicio() {
   const [isVisible, setIsVisible] = useState(true);
@@ -7,6 +7,7 @@ function NavInicio() {
 
   useEffect(() => {
     const controlNavbar = () => {
+      // Si scrolleamos hacia abajo más de 100px, ocultamos. Si subimos, mostramos.
       if (window.scrollY > lastScrollY && window.scrollY > 100) {
         setIsVisible(false);
       } else {
@@ -19,31 +20,39 @@ function NavInicio() {
   }, [lastScrollY]);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-transform duration-500 ${isVisible ? 'translate-y-0' : '-translate-y-full'} bg-[#fce7f3]/70 backdrop-blur-lg`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ease-in-out 
+      ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} 
+      bg-[#fce7f3]/40 backdrop-blur-2xl border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.05)]`}>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20"> {/* Aumenté un poco el alto para más elegancia */}
+          
+          {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center">
-            <span className="text-2xl font-bold text-gray-800 tracking-tighter">PHYSIS</span>
+            <span className="text-2xl font-black text-gray-800 tracking-widest">PHYSIS</span>
           </div>
 
+          {/* Search Bar - Ultra Glass Style */}
           <div className="hidden md:flex flex-1 justify-center px-8">
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full max-w-md group">
               <input 
                 type="text" 
                 placeholder="Search for inspiration..." 
-                className="w-full bg-white/40 border-none rounded-full py-1.5 pl-10 pr-4 text-gray-700 placeholder-gray-500 focus:ring-2 focus:ring-[#faacd4]/50"
+                className="w-full bg-white/30 border border-white/30 rounded-full py-2 pl-12 pr-4 text-gray-700 placeholder-gray-500 focus:bg-white/50 focus:outline-none focus:ring-2 focus:ring-[#faacd4]/40 transition-all backdrop-blur-md"
               />
-              <Search className="absolute left-3 top-2 text-gray-400" size={18} />
+              <Search className="absolute left-4 top-2.5 text-gray-500 group-focus-within:text-[#faacd4] transition-colors" size={20} />
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="flex bg-gray-200/30 p-1 rounded-full">
-              <button className="p-1.5 hover:bg-white rounded-full text-gray-600 transition-all"><Sun size={18} /></button>
-              <button className="p-1.5 hover:bg-white rounded-full text-gray-600 transition-all"><Moon size={18} /></button>
-              <button className="p-1.5 hover:bg-white rounded-full text-gray-600 transition-all"><Palette size={18} /></button>
+          {/* Actions & Theme Toggles */}
+          <div className="flex items-center gap-6">
+            <div className="flex bg-white/20 backdrop-blur-md p-1.5 rounded-full border border-white/30">
+              <button className="p-2 hover:bg-white/40 rounded-full text-gray-700 transition-all"><Sun size={18} /></button>
+              <button className="p-2 hover:bg-white/40 rounded-full text-gray-700 transition-all"><Moon size={18} /></button>
+              <button className="p-2 hover:bg-white/40 rounded-full text-gray-700 transition-all"><Palette size={18} /></button>
             </div>
-            <button className="bg-[#faacd4] text-white px-5 py-1.5 rounded-full font-bold text-sm hover:shadow-lg transition-all">
+            
+            <button className="bg-[#faacd4] text-white px-7 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-[#faacd4]/30 hover:bg-[#f992c3] hover:scale-105 active:scale-95 transition-all">
               Join
             </button>
           </div>

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Inicio from "../pages/Inicio";
+import Register from "../pages/Register"; // Importamos la nueva página
 import AdminProfile from "../pages/AdminProfile";
 import UserProfile from "../pages/UserProfile";
 
@@ -7,12 +8,21 @@ function Routing() {
   return (
     <Router>
       <Routes>
+        {/* Ruta principal */}
         <Route path="/" element={<Inicio />} />
-        {/* Prueba entrando manualmente a estas URLs */}
+        
+        {/* Ruta de Registro con efecto Glassmorphism */}
+        <Route path="/register" element={<Register />} />
+
+        {/* Rutas con Layout y Sidebar (Protegidas por Rol) */}
         <Route path="/admin-profile" element={<AdminProfile />} />
         <Route path="/user-profile" element={<UserProfile />} />
+        
+        {/* Puedes dejar esta lista para cuando hagamos el Login */}
+        {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
     </Router>
   );
 }
+
 export default Routing;
