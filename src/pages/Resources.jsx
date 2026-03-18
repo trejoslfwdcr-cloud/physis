@@ -1,7 +1,9 @@
+import Footer from "../components/Footer"
+
 function Resources() {
     return(
         <>
-        <h2>hola</h2>
+        <Footer />
         </>
     )
 }
