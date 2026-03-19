@@ -1,5 +1,4 @@
-import React from 'react';
-import NavInicio from '../components/NavInicio';
+
 
 function Inicio() {
   return (

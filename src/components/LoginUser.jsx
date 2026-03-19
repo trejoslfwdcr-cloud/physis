@@ -16,11 +16,10 @@ function LoginUser() {
 
   const handleLogin =  () => {
     const usuarioExiste = usuarios.find(
-      (u) =>u.rol=="user"&& u.nombreUsuario== correoUsuario|| u.correoUsuario == correoUsuario && u.claveUsuario == claveUsuario)
+      (u) =>u.rol == "user" && u.nombreUsuario == correoUsuario || u.correoUsuario == correoUsuario && u.claveUsuario == claveUsuario)
 
       const adminExiste = usuarios.find(
-      (u) =>u.rol=="admin"&& u.nombreUsuario== correoUsuario|| u.correoUsuario == correoUsuario && u.claveUsuario == claveUsuario
-    );
+      (u) =>u.rol == "admin" && u.nombreUsuario == correoUsuario || u.correoUsuario == correoUsuario && u.claveUsuario == claveUsuario);
 
     if (usuarioExiste) {
       alert("existe");
