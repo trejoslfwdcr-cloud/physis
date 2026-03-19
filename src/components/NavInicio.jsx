@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Sun, Moon, Palette } from 'lucide-react';
+import { useNavigate } from "react-router-dom"
 
 function NavInicio() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+   const navigate = useNavigate();
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -52,7 +54,8 @@ function NavInicio() {
               <button className="p-2 hover:bg-white/40 rounded-full text-gray-700 transition-all"><Palette size={18} /></button>
             </div>
             
-            <button className="bg-[#faacd4] text-white px-7 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-[#faacd4]/30 hover:bg-[#f992c3] hover:scale-105 active:scale-95 transition-all">
+            <button onClick={() => navigate("/login")} className="bg-[#faacd4] text-white px-7 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-[#faacd4]/30 hover:bg-[#f992c3] hover:scale-105 active:scale-95 transition-all">
+              
               Join
             </button>
           </div>

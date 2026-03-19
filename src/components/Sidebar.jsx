@@ -1,5 +1,5 @@
 
-import { LayoutDashboard, Users, BookOpen, Settings, LogOut, Heart, Database } from 'lucide-react';
+import { LayoutDashboard, Users, BookOpen, Settings, LogOut, Heart, Database } from "lucide-react"
 
 function Sidebar({ rol }) {
   const menuItems = rol === 'admin' 
