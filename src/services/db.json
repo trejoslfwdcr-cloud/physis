@@ -18,5 +18,13 @@
       "claveUsuario": "1",
       "rol": "usuario"
     }
-  ]
+  ],
+  "reportes": [
+    {
+      "id": "f3db",
+      "correo": "a@a",
+      "mensaje": "Buenas"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -5,6 +5,7 @@ import Register from "../pages/RegisterPage";
 import UserProfile from "../pages/UserProfile";
 import AdminProfile from "../pages/AdminProfile";
 import Resources from "../pages/Resources";
+import ContactUs from "../pages/ContactUs";
 
 
 function Routing() {
@@ -17,6 +18,8 @@ function Routing() {
                 <Route path= "/user-profile" element={<UserProfile/>}/>
                 <Route path= "/admin-profile" element={<AdminProfile/>}/>
                 <Route path= "/resources" element={<Resources/>}/>
+                <Route path= "/contact-us" element={<ContactUs/>}/>
+                <Route path= "*" element={<div>404 | Página no encontrada</div>}/>
             </Routes>
         </Router>
     )
