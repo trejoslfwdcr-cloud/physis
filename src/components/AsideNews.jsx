@@ -4,6 +4,7 @@ function AsideNews() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isShown, setIsShown] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -14,7 +15,6 @@ function AsideNews() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsShown(true);
-          // No obtener más notificaciones si ya se mostró.
           observer.disconnect();
         }
       },
@@ -23,8 +23,19 @@ function AsideNews() {
 
     observer.observe(el);
 
-    return () => observer.disconnect();
-  }, []);
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > 20 && !isShown) setIsShown(true);
+      setScrollY(y);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [isShown]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,6 +53,8 @@ function AsideNews() {
     setEmail("");
   };
 
+  const scrollOffset = Math.min(36, Math.max(0, scrollY * 0.1));
+
   return (
     <div
       ref={containerRef}
@@ -50,8 +63,10 @@ function AsideNews() {
         position: "sticky",
         top: "18vh",
         opacity: isShown ? 1 : 0,
-        transform: isShown ? "translateY(0)" : "translateY(30px)",
-        transition: "opacity 0.5s ease, transform 0.5s ease",
+        transform: isShown
+          ? `translateY(${scrollOffset}px)`
+          : "translateY(30px)",
+        transition: "opacity 0.5s ease, transform 0.3s ease",
       }}
     >
       <h3 style={styles.title}>Newsletter</h3>
