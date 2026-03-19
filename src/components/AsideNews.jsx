@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import bgImage from "../Img/web.png";
 
 function AsideNews() {
   const [email, setEmail] = useState("");
@@ -58,8 +59,8 @@ function AsideNews() {
   return (
     <div
       ref={containerRef}
+      className="relative overflow-hidden rounded-3xl shadow-xl shadow-gray-200/50 border border-white/60 p-8 flex flex-col items-center text-center group"
       style={{
-        ...styles.container,
         position: "sticky",
         top: "18vh",
         opacity: isShown ? 1 : 0,
@@ -69,63 +70,49 @@ function AsideNews() {
         transition: "opacity 0.5s ease, transform 0.3s ease",
       }}
     >
-      <h3 style={styles.title}>Newsletter</h3>
-      <p style={styles.text}>Suscríbete para recibir las últimas noticias.</p>
+      {/* Capa de la Imagen de Fondo */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity transition-transform duration-1000 group-hover:scale-110"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Ingresa tu correo"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
-        />
+      {/* Capa de Glassmorphism (Smooth & Translucent Overlay) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/50 to-[#faacd4]/10 backdrop-blur-[4px]" />
 
-        <button type="submit" style={styles.button}>
-          Suscribirse
-        </button>
-      </form>
+      {/* Contenido Principal */}
+      <div className="relative z-10 w-full space-y-5">
+        <div className="space-y-2">
+          <h3 className="text-2xl font-black text-gray-800 tracking-tight">
+            Newsletter
+          </h3>
+          <p className="text-sm text-gray-600 font-medium leading-relaxed">
+            Suscríbete para recibir las últimas noticias.
+          </p>
+        </div>
 
-      {message && <p style={styles.message}>{message}</p>}
+        <form className="space-y-3 w-full" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Ingresa tu correo"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-5 py-3 rounded-2xl bg-white/60 border border-white/50 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#faacd4]/50 focus:bg-white/90 transition-all shadow-sm"
+            required
+          />
+          <button
+            type="submit"
+            className="w-full py-3 bg-[#faacd4] text-white font-bold rounded-2xl shadow-lg shadow-[#faacd4]/30 hover:bg-[#f992c3] hover:-translate-y-0.5 active:translate-y-0 transition-all"
+          >
+            Suscribirse
+          </button>
+        </form>
+
+        {message && (
+          <p className="text-sm font-semibold text-[#faacd4] mt-2">{message}</p>
+        )}
+      </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    width: "280px",
-    padding: "20px",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "10px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-  },
-  title: {
-    marginBottom: "10px",
-  },
-  text: {
-    fontSize: "14px",
-    marginBottom: "15px",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    marginBottom: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-  },
-  button: {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#007BFF",
-    color: "#fff",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-  },
-  message: {
-    marginTop: "10px",
-    fontSize: "13px",
-  },
-};
 
 export default AsideNews;

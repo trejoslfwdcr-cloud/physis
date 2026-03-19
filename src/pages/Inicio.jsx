@@ -60,6 +60,7 @@ import React from "react";
 import NavInicio from "../components/NavInicio";
 import AsideNews from "../components/AsideNews.jsx";
 import Footer from "../components/Footer.jsx";
+import Cards from "../components/Cards.jsx";
 
 function Inicio() {
   return (
@@ -80,11 +81,8 @@ function Inicio() {
             </p>
           </section>
 
-          <section className="space-y-6">
-            <div className="h-72 rounded-3xl bg-gradient-to-b from-[#faacd4]/40 to-[#f8f9fa]" />
-            <div className="h-72 rounded-3xl bg-gradient-to-b from-[#cdb4db]/40 to-[#f8f9fa]" />
-            <div className="h-72 rounded-3xl bg-gradient-to-b from-[#bdb2ff]/40 to-[#f8f9fa]" />
-            <div className="h-72 rounded-3xl bg-gradient-to-b from-[#ffc6ff]/40 to-[#f8f9fa]" />
+          <section className="pt-4">
+            <Cards />
           </section>
         </main>
       </div>
