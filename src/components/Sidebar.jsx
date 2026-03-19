@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { LayoutDashboard, Users, BookOpen, Settings, LogOut, Heart, Database } from 'lucide-react';
 
 function Sidebar({ rol }) {

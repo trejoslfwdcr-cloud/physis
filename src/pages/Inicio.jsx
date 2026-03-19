@@ -1,8 +1,10 @@
-
+// 1. IMPORTACIÓN: Esto es lo que le falta para que no te dé el error de "NavInicio is not defined"
+import NavInicio from "../components/NavInicio";
 
 function Inicio() {
   return (
     <div className="min-h-[200vh] bg-[#f8f9fa]"> {/* min-h-200vh para permitir el scroll */}
+      {/* Ahora React ya sabe que esto viene de la carpeta components */}
       <NavInicio />
       
       {/* Contenido de prueba para ver el efecto */}
