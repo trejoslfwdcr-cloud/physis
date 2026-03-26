@@ -59,38 +59,79 @@
 import React from "react";
 import NavInicio from "../components/NavInicio";
 import AsideNews from "../components/AsideNews.jsx";
-import Footer from "../components/Footer.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 import Cards from "../components/Cards.jsx";
+import bgRed from "../Img/red.png"; // Importamos la imagen de fondo
+import { ThemeProvider, useTheme } from "../components/themes.jsx";
+import PhysisAssistant from "../components/PhysisAssistant.jsx";
+
+function InicioContent() {
+  const { theme, currentTheme } = useTheme();
+
+  return (
+    <div
+      className={`relative min-h-[220vh] ${theme.bgBase} transition-colors duration-500 flex flex-col overflow-hidden`}
+    >
+      {/* Capa de fondo animada */}
+      <div
+        className={`fixed inset-0 z-0 pointer-events-none ${currentTheme === "dark" ? "opacity-[0.05]" : "opacity-20"} transition-opacity duration-500`}
+        style={{
+          backgroundImage: `url(${bgRed})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          animation: "bgDrift 30s ease-in-out infinite alternate",
+        }}
+      />
+      <style>{`
+        @keyframes bgDrift {
+          0% { transform: scale(1) translate(0, 0); }
+          100% { transform: scale(1.1) translate(-2%, 2%); }
+        }
+      `}</style>
+
+      {/* Contenido principal (z-10 para estar por encima del fondo) */}
+      <div className="relative z-10 flex flex-col flex-1">
+        <NavInicio />
+
+        <div className="container mx-auto flex flex-col lg:flex-row items-start justify-start p-8 gap-8">
+          <aside className="lg:w-80 w-full sticky top-24">
+            <AsideNews />
+          </aside>
+
+          <main
+            className={`flex-1 ${currentTheme === "dark" ? "bg-slate-900/50 text-slate-100" : "bg-white/80"} backdrop-blur-xl border ${theme.borderGlass} shadow-xl rounded-2xl p-10 space-y-8 transition-colors duration-500`}
+          >
+            <section className="space-y-4">
+              <h1 className={`text-5xl font-bold ${theme.accentText}`}>
+                PHYSIS 
+              </h1>
+              <p className={`${theme.textSecondary} text-lg`}>
+                Explore the Revolutionary Idea that Brings Real Life Changes!
+              </p>
+            </section>
+
+            <section className="pt-4">
+              <Cards />
+            </section>
+          </main>
+        </div>
+       <div> 
+        <PhysisAssistant/>
+       </div>
+
+        <div className="mt-auto">
+          <Footer />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Inicio() {
   return (
-    <div className="min-h-[220vh] bg-[#f8f9fa] flex flex-col">
-      <NavInicio />
-
-      <div className="container mx-auto flex flex-col lg:flex-row items-start justify-start p-8 gap-8">
-        <aside className="lg:w-80 w-full sticky top-24">
-          <AsideNews />
-        </aside>
-
-        <main className="flex-1 bg-white shadow-xl rounded-2xl p-10 space-y-8">
-          <section className="space-y-4">
-            <h1 className="text-5xl font-bold text-blue-600">¡Physis vive!</h1>
-            <p className="text-gray-600 text-lg">
-              Desplázate hacia abajo para ver el efecto de aparición y
-              desplazamiento del componente newsletter.
-            </p>
-          </section>
-
-          <section className="pt-4">
-            <Cards />
-          </section>
-        </main>
-      </div>
-
-      <div className="mt-auto">
-        <Footer />
-      </div>
-    </div>
+    <ThemeProvider>
+      <InicioContent />
+    </ThemeProvider>
   );
 }
 

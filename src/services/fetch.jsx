@@ -1,3 +1,5 @@
+
+
 async function getDatos(endpoint) {
 
   const peticion = await fetch(`http://localhost:3001/${endpoint}`);
