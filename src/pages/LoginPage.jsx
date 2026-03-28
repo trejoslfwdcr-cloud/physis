@@ -1,8 +1,13 @@
+import Footer from "../components/Footer"
+import LoginUser from "../components/LoginUser"
+
+
 function Login() {
     return(
-        <>
-        <h2>hola</h2>
-        </>
+     <>
+      <LoginUser />
+      <Footer />
+    </>
     )
 }
 export default Login

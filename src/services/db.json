@@ -1,0 +1,30 @@
+{
+  "usuarios": [
+    {
+      "id": "6",
+      "nombre": "Logan",
+      "nombreUsuario": "LG",
+      "apellidoUsuario": "Trejos",
+      "correoUsuario": "logan@gmail.com",
+      "claveUsuario": "hola1!",
+      "rol": "admin"
+    },
+    {
+      "id": "ecdc",
+      "nombre": "a",
+      "nombreUsuario": "b",
+      "apellidoUsuario": "c",
+      "correoUsuario": "a@gmail.com",
+      "claveUsuario": "1",
+      "rol": "usuario"
+    }
+  ],
+  "reportes": [
+    {
+      "id": "f3db",
+      "correo": "a@a",
+      "mensaje": "Buenas"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
